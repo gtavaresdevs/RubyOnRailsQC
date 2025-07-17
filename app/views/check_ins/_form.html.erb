@@ -1,0 +1,38 @@
+<div>
+<%= form_with(model: check_in, class: 'check-in-form') do |form| %>
+  <% if check_in.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(check_in.errors.count, "error") %> prevented this check-in from being saved:</h2>
+      <ul>
+        <% check_in.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :content, "Content" %>
+    <%= form.text_area :content, class: "form-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location, "Location" %>
+    <%= form.text_field :location, class: "form-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :mood, "Mood" %>
+    <%= form.select :mood, ['Happy', 'Sad', 'Anxious', 'Calm'], { prompt: 'Select mood' }, class: "form-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :note, "Additional Notes" %>
+    <%= form.text_area :note, class: "form-input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit Check-in", class: "submit-button" %>
+  </div>
+<% end %>
+</div>

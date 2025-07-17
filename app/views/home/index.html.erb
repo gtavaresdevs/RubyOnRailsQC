@@ -1,0 +1,36 @@
+<div class="homepage-hero">
+  <h1>Welcome to Remote Check-in</h1>
+  <p class="subtitle">Track, record, and reflect on your daily status in a simple and secure way.</p>
+</div>
+
+<section class="features-grid">
+  <div class="feature-card">
+    <h2>📝 Quick Check-ins</h2>
+    <p>Submit a short daily log with your current mood, location, and personal notes. Designed for speed and ease.</p>
+  </div>
+
+  <div class="feature-card">
+    <h2>🔒 Secure Access</h2>
+    <p>Protected by authentication and CSRF security. All check-ins are linked to your account only.</p>
+  </div>
+
+  <div class="feature-card">
+    <h2>📊 Organized Timeline</h2>
+    <p>Your check-ins are grouped by date, showing a clean historical view with time stamps and edits.</p>
+  </div>
+
+  <div class="feature-card">
+    <h2>💡 Future-Proof</h2>
+    <p>Modular structure, PWA-ready, mobile-first layout. Built on Rails for extensibility and performance.</p>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>🚀 Ready to get started?</h2>
+  <p>Create your free account and start checking in now. It only takes a few seconds.</p>
+  <div class="cta-buttons">
+    <%= link_to 'Sign up', new_user_registration_path, class: 'cta-button primary' %>
+    <span class="cta-or">or</span>
+    <%= link_to 'Login', new_user_session_path, class: 'cta-button primary' %>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Remote Checkin" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+
+    <%# Include specific stylesheet for the home page if it's the current controller %>
+    <% if controller.controller_name == 'home' %>
+      <%= stylesheet_link_tag 'home', 'data-turbo-track': 'reload' %>
+    <% end %>
+
+    <%# Include specific stylesheet for the login page (sessions#new) %>
+    <% if controller.controller_name == 'sessions' && action_name == 'new' %>
+      <%= stylesheet_link_tag 'new', media: 'all' %>
+    <% end %>
+
+    <%# Include specific stylesheet for the sign-up page (registrations#new) %>
+    <% if controller.controller_name == 'registrations' && action_name == 'new' %>
+      <%= stylesheet_link_tag 'sign_up', media: 'all' %>
+    <% end %>
+
+
+ <% if controller.controller_name == 'check_ins' %>
+      <%= stylesheet_link_tag 'check_ins', 'data-turbo-track': 'reload' %>
+    <% end %>
+
+
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <div class="auth-status">
+        👋 Logged in as <strong><%= current_user.email %></strong> |
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, form: { style: 'display: inline' }, class: "logout-button" %>
+      </div>
+    <% end %>
+
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

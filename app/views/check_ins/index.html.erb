@@ -1,0 +1,39 @@
+<div class="check-in-log-container">
+  <h1>Check-in Log</h1>
+
+  <div class="main-content">
+    <p><%= link_to "New check-in", new_check_in_path, class: "button new-check-in" %></p>
+
+    <% grouped = @check_ins.where(user: current_user).group_by { |c| c.created_at.to_date } %>
+
+    <% grouped.each do |date, entries| %>
+      <h2><%= date.strftime("%A, %B %e, %Y") %></h2>
+      <ul>
+        <% entries.each do |check_in| %>
+          <li class="check-in-item">
+            <strong><%= check_in.user.email %>:</strong> <%= check_in.content %><br>
+
+            <% if check_in.location.present? %>
+              📍 <em><%= check_in.location %></em><br>
+            <% end %>
+
+            <% if check_in.mood.present? %>
+              😊 Mood: <%= check_in.mood %><br>
+            <% end %>
+
+            <% if check_in.note.present? %>
+              📝 Note: <%= check_in.note %><br>
+            <% end %>
+
+            <span class="time"><%= time_ago_in_words(check_in.created_at) %> ago</span><br>
+
+            <% if user_signed_in? %>
+              <%= link_to "Edit", edit_check_in_path(check_in), class: "button small" %>
+              <%= link_to "Delete", check_in_path(check_in), method: :delete, data: { confirm: "Are you sure?" }, class: "button small danger" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

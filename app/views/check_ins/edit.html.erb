@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Check</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+  <body class="check-in-edit-page">
+    <div class="check-in-edit-allDiv">
+      <h1 class="check-in-edit-title">Edit Check</h1>
+      <%= render 'form', check_in: @check_in, class: "check-in-form-container" %>
+      <p><%= link_to "Back to Check-Ins", check_ins_path, class: "back-to-checkins-button" %></p>
+    </div>
+  </body>
+</html>
+ 

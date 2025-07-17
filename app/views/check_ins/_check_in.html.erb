@@ -1,0 +1,17 @@
+<div id="<%= dom_id check_in %>" class="check-in-item">
+  <p>
+    <strong>Content:</strong>
+    <%= check_in.content %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= check_in.user.email %>  <!-- assuming user has an email attribute -->
+  </p>
+
+  <!-- Add a button for actions like Edit/Delete if needed -->
+  <div class="check-in-actions">
+    <%= link_to 'Edit', edit_check_in_path(check_in), class: 'button small' %>
+    <%= link_to 'Delete', check_in_path(check_in), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small danger' %>
+  </div>
+</div>

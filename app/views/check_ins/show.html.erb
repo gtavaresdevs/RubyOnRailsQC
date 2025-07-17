@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+<body class="check-in-edit-delete-page">
+<p style="color: green"><%= notice %></p>
+
+<%= render @check_in, class: "check-in-form-container" %>
+<div class="back-to-checkins-button-div">  
+  <p><%= link_to "Back to Check-Ins", check_ins_path, class: "back-to-checkins-button-delete-page" %></p>
+  </br>
+  <p><%= button_to "Destroy this check in", @check_in, method: :delete, class: "back-to-checkins-button-delete-page" %></p>
+</div>
+</body>
+</html>

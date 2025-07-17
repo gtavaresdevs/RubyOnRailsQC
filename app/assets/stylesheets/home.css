@@ -1,0 +1,101 @@
+/* Home Page Styles */
+
+/* Hero Section */
+.homepage-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #FF4C00 0%, #FFD700 50%, #FF7F00 100%);
+  color: white;
+  width: 100%;
+  position: relative;
+}
+
+/* Feature Cards Section */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 1200px; /* Limit the width for a more centered layout */
+  margin: 0 auto; /* Center the grid container */
+}
+
+/* Feature Card */
+.feature-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px); /* Hover effect */
+}
+
+.feature-card h2 {
+  font-size: 1.5rem;
+  color: #FF7F00;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #374151;
+}
+
+/* CTA Section */
+.cta-section {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FF7F00;
+  margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+  font-size: 1.25rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.cta-button.primary {
+  background-color: #FF7F00;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button.primary:hover {
+  background-color: #e65c00;
+}
+
+.cta-or {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 600;
+}

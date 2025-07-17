@@ -1,0 +1,351 @@
+/* General page layout */
+.check-in-log-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #FF4C00 0%, #FFD700 50%, #FF7F00 100%);
+  color: #fff;
+  height: 100vh;
+  justify-content: flex-start;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  color: #1e2a3a;
+}
+
+/* Header positioning */
+.header {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.auth-status {
+  margin-left: 1rem;
+}
+
+/* Styling for check-ins */
+.main-content {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 5rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.check-in-item {
+  background-color: #fff;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #111827;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.time {
+  color: #6b7280;
+  font-size: 0.875rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Buttons (Edit/Delete) */
+.button {
+  padding: 0.6rem 1.2rem;
+  background-color: #FF7F00;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.button:hover {
+  background-color: #FF4C00;
+}
+
+.button.small {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.button.small.danger {
+  background-color: #ef4444;
+}
+
+.button.small.danger:hover {
+  background-color: #dc2626;
+}
+
+/* Styling the "New check-in" link */
+.new-check-in {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.new-check-in:hover {
+  background-color: #2563eb;
+}
+
+/* Center the notice alert */
+.error-messages {
+  margin-bottom: 1.5rem;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+  .check-in-log-container {
+    padding: 1rem;
+  }
+
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .check-ins-wrapper {
+    padding: 0 1rem;
+  }
+}
+
+.check-in-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.check-in-form-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+}
+
+.check-in-submit-button {
+  background-color: #FF7F00;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.check-in-submit-button:hover {
+  background-color: #FF4C00;
+}
+
+.check-in-edit-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1e2a3a;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+
+/* General styling for form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+/* Styling for form inputs */
+.form-input {
+  width: 90%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #FF7F00; /* Orange color for focus */
+  box-shadow: 0 0 5px rgba(255, 127, 0, 0.4); /* Subtle glowing effect */
+}
+
+/* Styling for the submit button */
+.submit-button {
+  background-color: #FF7F00;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.submit-button:hover {
+  background-color: #FF4C00;
+}
+
+/* Responsiveness for small screens */
+@media (max-width: 768px) {
+  .form-group {
+    width: 100%;
+  }
+}
+
+.check-in-edit-page {
+  background: linear-gradient(135deg, #FF4C00 0%, #FFD700 50%, #FF7F00 100%);
+  padding: 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.check-in-edit-delete-page {
+  background: linear-gradient(135deg, #FF4C00 0%, #FFD700 50%, #FF7F00 100%);
+  padding: 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.check-in-edit-allDiv {
+  CONTAIN-INTRINSIC-BLOCK-SIZE: AUTO 100PX;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent white */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+
+.check-in-edit-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1e2a3a;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FF4C00 0%, #FFD700 50%, #FF7F00 100%);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.check-in-edit-title:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #FFD700 0%, #FF4C00 50%, #FF7F00 100%);
+}
+
+/* Styling for the Back to Check-Ins button */
+.back-to-checkins-button {
+  display: inline-block;
+  background-color: #3b82f6; /* Blue background */
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.back-to-checkins-button:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+.back-to-checkins-button-delete-page {
+  display: inline-block;
+  background-color: #3b82f6; /* Blue background */
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 100%; /* Make the button fill the container */
+  max-width: 300px; /* Limit the button width */
+}
+
+.back-to-checkins-button-delete-page:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+
+select[name="check_in[mood]"] {
+  width: 94.8%; /* Match the width with .form-input */
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease;
+}
+.back-to-checkins-button-div {
+  display: flex; /* Aligns items in a row (side by side) */
+  gap: 2rem; /* Adds a 2rem gap between the buttons */
+  justify-content: center; /* Centers the buttons horizontally */
+  align-items: center; /* Aligns the buttons vertically */
+}
