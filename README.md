@@ -1,144 +1,172 @@
-# Remote Work Check-in Log
+Remote Work Check-in Log
+1. Project Overview
+The Remote Work Check-in Log is a web-based application designed for remote teams to submit daily work check-ins. This tool allows users to share a brief update on their progress, which is displayed in a centralized, chronological dashboard for easy visibility.
 
-## 1. Project Summary
-A lightweight web-based application that allows remote team members to submit daily work check-ins. The tool displays all submitted check-ins on a centralized dashboard, supporting asynchronous visibility of daily status across the team.
+2. Key Features
+Daily Check-ins: Users can submit one check-in per day.
 
-## 2. Key Objectives
-- Enable users to submit one short check-in per day.
-- Display daily check-ins in chronological order.
-- Provide a clear and minimal UI for fast interaction.
-- Include optional search and date filter to locate updates.
-- Prevent duplicate entries per user per day.
+Easy Interaction: The UI is simple, focused on efficient check-in submission.
 
-## 3. Architecture Overview
+Search & Filter: Allows searching and filtering of check-ins by date or keyword.
 
-### 3.1 Core Stack
-- **Backend Framework**: Ruby on Rails 8
-- **Database**: PostgreSQL
-- **Frontend**: Embedded Ruby (ERB) with optional JS enhancements
-- **Environment**: Linux (WSL2 Ubuntu 24.04)
+Edit/Delete Entries: Users can edit or delete their own check-ins for the current day.
 
-### 3.2 System Flow
-- User accesses the homepage (`/check_ins`).
-- User submits a check-in via form (`POST /check_ins`).
-- Application validates and stores the entry.
-- Dashboard updates with the new entry.
-- Optionally, user can edit or delete own entries.
-- Admin-level user can filter/search all logs.
+3. Architecture Overview
+Core Technologies:
+Backend: Ruby on Rails 8
 
-## 4. Models
+Frontend: Embedded Ruby (ERB) with optional JavaScript enhancements
 
-### CheckIn Model
-| Field      | Type     | Description                |
-|------------|----------|----------------------------|
-| `id`       | Integer  | Primary key                |
-| `content`  | Text     | Main check-in message      |
-| `user`     | String   | User identifier            |
-| `created_at` | DateTime | Timestamp of submission    |
-| `updated_at` | DateTime | Timestamp of last modification |
+Database: PostgreSQL
 
-## 5. Functional Requirements
+Environment: Linux (WSL2 - Ubuntu 24.04)
 
-### 5.1 Submit a Check-in
-- Users must submit a short message (max 280 characters).
-- Each user is limited to one submission per calendar day.
+Application Flow:
+Homepage (/check_ins) - Where users can submit check-ins.
 
-### 5.2 Edit / Delete a Check-in
-- Users may modify or delete their own check-in for the current day only.
-- No historical edits are allowed for entries older than 24h.
+Form Submission: A simple form for check-in submission (POST /check_ins).
 
-### 5.3 Dashboard
-- List all check-ins grouped by date.
-- Display includes timestamp and user name.
-- Optionally filtered by date or keyword.
+Dashboard: Displays all submitted check-ins in chronological order.
 
-### 5.4 Validation Rules
-- `content` must be present and ≤ 280 characters.
-- Only one check-in per user per day.
+Editing & Deleting: Users can edit or delete their own entries for the day.
 
-## 6. Optional Enhancements
+4. Models
+CheckIn Model:
 
-| Feature              | Description                                   |
-|----------------------|-----------------------------------------------|
-| **Emoji/Markdown Parser** | Converts `:emoji:` or markdown into display |
-| **Streak Counter**       | Calculates how many consecutive days logged |
-| **Reaction System**      | Users can react with 👍 or emojis            |
-| **Search Function**      | Simple keyword search across entries         |
-| **Tagging**              | Add optional tags (e.g., #product, #tech)    |
+id: Primary key (Integer)
 
-## 7. System Constraints
-- Authentication is optional and sessionless in MVP.
-- User is identified through session or cookie only.
-- Application does not persist user accounts.
+content: Check-in content (Text)
 
-## 8. Breakpoints for Testing/Debugging
+user: User identifier (String)
 
-| Component          | Test/Debug Case                               |
-|--------------------|-----------------------------------------------|
-| **Duplicate Check-in** | Submit two entries on the same day (expect error) |
-| **Long Entry**       | Submit >280 characters (expect validation failure) |
-| **Streak logic**     | Break date sequence intentionally             |
-| **Edit others' posts** | Try editing a different user’s check-in      |
-| **Search edge cases** | Use case-sensitive or blank queries          |
+created_at: Timestamp for submission (DateTime)
 
-## 9. Directory & File Structure
+updated_at: Timestamp for last modification (DateTime)
 
-app/
-├── controllers/
-│ └── check_ins_controller.rb
-├── models/
-│ └── check_in.rb
-├── views/
-│ └── check_ins/
-│ ├── index.html.erb
-│ ├── new.html.erb
-│ ├── edit.html.erb
-│ └── _form.html.erb
+5. Functional Requirements
+5.1 Submit a Check-in
+Content must be present and ≤ 280 characters.
 
-markdown
-Copiar
-Editar
+Only one check-in per user per day.
 
-## 10. Environment Setup (Linux / WSL)
+5.2 Edit/Delete a Check-in
+Users can edit/delete their own check-ins.
 
-- **Ruby**: 3.1.4 via RVM
-- **Rails**: 8.0.2
-- **PostgreSQL + libpq-dev**
-- **Node.js**: 18+
-- **Yarn**: 1.22+
+No edits are allowed for check-ins older than 24 hours.
 
-## 11. Project Creation Command
+5.3 Dashboard
+Displays check-ins grouped by date.
 
-```bash
-rails new remote_checkin --database=postgresql
-12. Initial Scaffold Setup (Suggested)
+Search and filter functionality based on date or content.
+
+6. Optional Features
+Emoji/Markdown Parser: Converts :emoji: to actual emojis.
+
+Streak Counter: Tracks consecutive days of check-ins.
+
+Reaction System: Users can react with emojis.
+
+Search Functionality: Simple keyword search across check-ins.
+
+Tagging: Add tags (e.g., #product, #meeting) to each check-in.
+
+7. Setup & Installation (WSL2 & Visual Studio Code)
+Prerequisites:
+WSL2 (Ubuntu 24.04) - Install WSL2 and Ubuntu on Windows.
+
+Ruby 3.1.4 - Install Ruby through WSL.
+
+Rails 8 - Install Rails within your WSL2 environment.
+
+PostgreSQL - Set up PostgreSQL as the database.
+
+Step-by-Step Setup:
+Clone the repository:
+
 bash
 Copiar
 Editar
-rails g scaffold CheckIn content:text user:string
-rails db:create db:migrate
-13. Versioning & Branch Strategy
-Main Branch: Single main branch for MVP.
+git clone https://github.com/your_username/remote_checkin.git
+cd remote_checkin
+Install dependencies:
 
-Feature Branches: Feature-specific branches for enhancements.
-
-Git Tags: For debugging simulation points:
-
-v0.1-validation-broken
-
-v0.2-permission-leak
-
-v1.0-mvp-complete
-
-r
+bash
 Copiar
 Editar
+bundle install
+yarn install
+Setup Database:
 
-This `README.md` file outlines all relevant information for the project, including functionality, technical setup, and versioning.
+bash
+Copiar
+Editar
+rails db:create
+rails db:migrate
+Start the server:
 
+bash
+Copiar
+Editar
+rails s
+Access the app:
+Navigate to http://localhost:3000 in your browser.
 
+Using Visual Studio Code with WSL2:
+Open the project in Visual Studio Code.
 
+Use the Remote - WSL extension in VS Code to open and edit the files directly within your WSL2 environment.
 
+8. Troubleshooting Steps
+Push Errors: If you receive errors like Updates were rejected because the remote contains work that you do not have locally, run:
 
+bash
+Copiar
+Editar
+git pull origin main --rebase
+git push -u origin main
+This syncs your local changes with the remote repository.
 
+Commit Errors: If you encounter issues during a commit like Unmerged paths:
 
+Resolve conflicts manually or use:
+
+bash
+Copiar
+Editar
+git rebase --continue
+Commit your changes and push them again.
+
+Repository not found: If you get errors like fatal: repository not found, ensure the remote URL is correctly configured:
+
+bash
+Copiar
+Editar
+git remote set-url origin https://github.com/your_username/remote_checkin.git
+9. Directory Structure
+plaintext
+Copiar
+Editar
+app/
+├── controllers/
+│   └── check_ins_controller.rb
+├── models/
+│   └── check_in.rb
+├── views/
+│   └── check_ins/
+│       ├── _form.html.erb
+│       ├── edit.html.erb
+│       ├── index.html.erb
+│       ├── new.html.erb
+│       └── show.html.erb
+config/
+├── database.yml
+└── routes.rb
+db/
+├── schema.rb
+└── seeds.rb
+10. Final Notes
+This app is built using Ruby on Rails and PostgreSQL for the backend.
+
+Visual Studio Code with WSL2 is an efficient setup for Windows users to edit and run the project.
+
+Make sure to follow all steps correctly, especially for setting up the database and handling Git issues.
